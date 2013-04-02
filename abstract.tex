@@ -1,0 +1,22 @@
+% abstract
+Currently with the popularity of internet and phenomenon of the social
+networks a large amount of data is generated day-to-day. To analyse and
+process such quantity of data is needed a big computing power that one
+single machine could not analyse such data. To solve it the big companies,
+researchers and governments are using distributed computation.
+
+To perform the distributed computation efficiently the data storage must
+be simple and so to allow parallel processing. A model that has such features
+is the key-value model and the interface with this model is MapReduce
+paradigm \cite{Dean:2004}.
+
+Key-value model and MapReduce paradigm are implemented on the framework
+Hadoop that is used by big companies like Yahoo, Google, IBM, EBay
+among others \cite{hadoop_use}. Hadoop provides interface to distribute data and
+computation on cluster of machines, also storage data on key-value
+model \cite{hadoop}. Hadoop is simple to implement jobs, however there are many of
+knobs to adjust it that depents of the data stored and job running.
+
+So to facilitate the hadoop job configuration we propose a framework based on
+bacteriological algorithm \cite{baudry}. Our framework allows to find a good
+hadoop configuration considering the data stored and the job in question.
