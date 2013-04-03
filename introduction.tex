@@ -11,6 +11,17 @@ MapReduce has a simplified programming model, where data processing algorithms a
 The main complexity that is left to the developer of a MapReduce-based application (also called a job) lies in the design decisions made to split the application specific algorithm into two higher-order functions. Even if some decisions may result in a functionally correct application, bad design choices might also lead to poor resource usage.
 
 %%%%%%%%%%%%%%%%%%%% Reescrever este paragrafo
+A good configuration can improve the job performance, hence is very
+important to adjust the configuration knobs for each job and this configutarion
+must be specific for own job. However, according with the cluster variation,
+eg. to add or to remove machines, and the data variation, may be need to
+adjust again the job configuration.
+
+Find a good configuration is not so easy and may spend much time. So 
+one way to automate the job configuration is very useful for users.
+
+%%%FALAR do sampling dos dados
+
 As for any other piece of software, testing may be used to evaluate the quality of MapReduce jobs. The efficiency of testing to detect quality issues in the jobs is in turn directly related to the quality of the test suite. MapReduce jobs work with large amounts of data, which is a major difficulty to generate relevant test data that can reveal quality issues. If on one hand using large data sets as input data is not scalable, on the other hand a small amount of data may not expose errors related to the large-scale aspects: efficient resource usage, correct merge of data, etc.
 
 \section{Contribution}
