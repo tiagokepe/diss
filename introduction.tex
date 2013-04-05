@@ -5,44 +5,58 @@
 
 MapReduce~\cite{Dean:2004} became the industry de facto standard for parallel processing. Attractive features such as scalability and reliability motivate many large companies such as Facebook, Google, Yahoo and research institutes to adopt this new programming paradigm. 
 These organizations rely on Hadoop~\cite{White:2009}, an open-source implementation of MapReduce, to process their information.
-Besides Hadoop, several other implementations are available: Greenplum MapReduce~\cite{Greenplum:2008}, Aster Data~\cite{Aster:2011}, Nokia Disco~\cite{Mundkur:2011},  Microsoft Dryad~\cite{Isard:2007}, among others. 
+Besides Hadoop, several other implementations are available: Greenplum MapReduce~\cite{Greenplum:2008}, Aster Data~\cite{Aster:2011}, Nokia Disco~\cite{Mundkur:2011},  Microsoft Dryad~\cite{Isard:2007}, among others.
 
-MapReduce has a simplified programming model, where data processing algorithms are implemented as instances of two higher-order functions: Map and Reduce. All complex issues related to distributed processing, such as scalability, data distribution and reconciliation, concurrence, fault tolerance, etc., are managed by the framework. 
+MapReduce has a simplified programming model, where data processing algorithms are implemented as instances of two higher-order functions: Map and Reduce. All complex issues related to distributed processing, such as scalability, data distribution and reconciliation, concurrence, fault tolerance, etc., are managed by the framework.
 The main complexity that is left to the developer of a MapReduce-based application (also called a job) lies in the design decisions made to split the application specific algorithm into two higher-order functions. Even if some decisions may result in a functionally correct application, bad design choices might also lead to poor resource usage.
 
-%%%%%%%%%%%%%%%%%%%% Reescrever este paragrafo
-A good configuration can improve the job performance, hence is very
-important to adjust the configuration knobs for each job and this configutarion
-must be specific for own job. However, according with the cluster variation,
-eg. to add or to remove machines, and the data variation, may be need to
-adjust again the job configuration.
+A good configuration can improve the job performance and one relevant aspect is
+that the MapReduce jobs work with large amounts of data, such fact is the
+main barrier to find a good configuration. Therefore a data sample is
+essencial, but generate a representative and relevant data sampling is hard
+and a bad sampling may not represent several aspects related to the computation
+in large-scale: efficient resource usage, correct merge of data, intermediate
+data, etc.
 
-Find a good configuration is not so easy and may spend much time. So 
+
+Hence is very important to adjust the configuration knobs for each job and this
+configutarion must be specific for own job. However, according with the cluster
+variation, eg. to add or to remove machines, the data insertion or remotion,
+may be need to adjust again the job configuration.
+
+Find a good configuration is not so easy and may spend much time. So
 one way to automate the job configuration is very useful for users.
-
-%%%FALAR do sampling dos dados
-
-As for any other piece of software, testing may be used to evaluate the quality of MapReduce jobs. The efficiency of testing to detect quality issues in the jobs is in turn directly related to the quality of the test suite. MapReduce jobs work with large amounts of data, which is a major difficulty to generate relevant test data that can reveal quality issues. If on one hand using large data sets as input data is not scalable, on the other hand a small amount of data may not expose errors related to the large-scale aspects: efficient resource usage, correct merge of data, etc.
 
 \section{Contribution}
 
-We present an original approach for the generation of test data that target resource usage defects in MapReduce jobs. We use an evolutionary algorithm to generate test data and propose semantic mutation operators to evaluate the quality of the data with respect to their ability at detecting issues in the design of the map and reduce functions. This focus on testing design decisions lies on two observations. First, these design decisions are essential to implement MapReduce jobs, and they should be systematically tested along with the functionality of the job. Second, the functionality of map and reduce is usually simple (small functions, simple control and data flow) since most of the complexity of these jobs (distribution, synchronization, etc.) is handled by the framework. Consequently, simple test cases tend to cover 100\% of the job under test, can be good at detecting algorithmic errors, but are not sufficient to test the efficiency of the map and reduce design. 
+We present an original approach to automate Hadoop job configuration, our
+implementation is basead in an evolutionary algorithm \cite{baudry} and in
+order to use this algorithm we develop a method to obtain data sample on
+hadoop cluster. To develop this method we needed to consider a lot of
+aspects related the paradigm MapReduce, key-value model and others hadoop
+particularities. Our framework has an user interface which have been implementing
+with domain specific language ({\bf DSL}), it's a front end for the users and facilitates the
+use of the our framework, after ran it the user can obtain the job configuration
+resultant, so the users have a tool end-to-end.
 
-The work presented here contributes to the establishment of systematics testing techniques for MapReduce jobs, through the following proposals:
+The work presented here contributes to the establishment a framework to automate
+Hadoop job configuration, through the following proposals:
 \begin{itemize}
-	\item fault models that focus on design issues when splitting a task between map and reduce functions
-	\item an automatic search-based technique to generate test data which target these faults
-	\item a series of initial experiments that illustrate the difficulty of detecting these faults, and the capacity of our algorithm at generating data that target them
-\end{itemize} 
+	\item a interface for users basead on domain specific language;
+	\item an algorithm to automate a good choice of jobs configuration;
+	\item a method for sampling data on Hadoop clusters.
+\end{itemize}
 
 \section{Outline}
 
 \begin{itemize}
-	\item Chapter \ref{cha:background} introduces the  fundamental concepts of the MapReduce framework.
-	\item Chapter \ref{cha:testgen} introduces two test quality assessment methods, describes methods to data test generation and 
-	      meta-heuristic search methods. Two data test generators are presented with their results.
-	\item Chapter \ref{cha:proposal} presents our approach to test data generation for testing MapReduce systems.
-	\item In chapter \ref{cha:experiments} we and discuss a case study performed with our solution.
+	\item Chapter \ref{cha:background} introduces the fundamental concepts of the MapReduce framework.
+	\item Chapter \ref{cha:dsn} introduces the concepts of the domain specific language.
+	\item Chapter \ref{cha:alg} presents the bacteriological algorithm.
+    \item Chapter \ref{cha:sample} presents the method to generate sampling
+    data.
+	\item In chapter \ref{cha:proposal} we presents our framework with all components.
+    \item In chapter \ref{cha:experiments} we discussed a case study performed with our solution.
 	\item In chapter \ref{cha:conclusion} we conclude our results.
 \end{itemize}
 
