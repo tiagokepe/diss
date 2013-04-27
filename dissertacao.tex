@@ -6,11 +6,22 @@
 \usepackage[english]{babel}
 \usepackage[utf8]{inputenc}
 \usepackage{amssymb,amsmath,amsfonts}
+\usepackage{amsmath}
 \usepackage{epsfig}
 \usepackage{multirow}
 
+\newcommand{\tuple}[1]{\ensuremath{\left \langle #1 \right \rangle }}
+\newcommand{\code}[1]{\textbf{#1}}
 
 \usepackage{ifthen,graphicx,color}
+
+\usepackage{verbatim}
+%\usepackage[pdfborder={0 0 0},plainpages=false]{hyperref}
+
+\usepackage{listings}
+\usepackage{minted}
+%\usemintedstyle{trac}
+
 %\usepackage{isolatin1}
 \usepackage{amssymb}
 \usepackage{subfigure}
@@ -83,8 +94,8 @@ job configuration}
 \pagenumbering{arabic}
 
 \input{introduction.tex}
-%\input{capitulo2.tex}
-%\input{capitulo3.tex}
+\input{background.tex}
+\input{dsl.tex}
 %\input{capitulo4.tex}
 %\input{capitulo5.tex}
 %\input{capitulo6.tex}

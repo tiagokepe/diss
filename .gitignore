@@ -1,0 +1,17 @@
+*.log
+*.bbl
+*.lol
+*.lot
+*.out
+*.pyg
+*.synctex.gz
+*.toc
+*.lof
+*.blg
+*.aux
+*.svn
+dissertation.pdf
+*.snm
+*.nav
+papers
+papers/*
