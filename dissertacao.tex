@@ -18,6 +18,7 @@
 \usepackage{verbatim}
 %\usepackage[pdfborder={0 0 0},plainpages=false]{hyperref}
 
+%\usepackage[ruled, vlined]{algorithm2e}
 \usepackage{listings}
 \usepackage{minted}
 %\usemintedstyle{trac}
@@ -31,6 +32,12 @@
 % \usepackage{psfig}
 
 \usepackage{indentfirst}
+%\usepackage[noend]{algpseudocode}
+\usepackage{algorithm2e}
+\usepackage{algpseudocode}
+\newcommand*\Let[2]{\State #1 $\gets$ #2}
+\algrenewcommand\algorithmicrequire{\textbf{Precondition:}}
+\algrenewcommand\algorithmicensure{\textbf{Postcondition:}}
 
 \setcounter{secnumdepth}{3}    % n - numero de niveis de subsubsection numeradas
 \setcounter{tocdepth}{3}       % coloca ate o nivel n no sumario
@@ -95,6 +102,8 @@ job configuration}
 
 \input{introduction.tex}
 \input{background.tex}
+\input{bact.tex}
+\input{sample.tex}
 \input{dsl.tex}
 %\input{capitulo4.tex}
 %\input{capitulo5.tex}
