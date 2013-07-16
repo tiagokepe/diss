@@ -31,8 +31,8 @@ distributed. For data sample the aspects involving storage distributed are more
 relevant. In this context, without doubt, the data volume is the main issue because
 the data sampling must be done distributed too, otherwise one machine couldn't bear
 all data storage in the cluster then make the data sampling. Also the data sampling
-resultant must be storage distributed in the cluster, because even a sample the
-result can be big and a single machine couldn't bear too.
+resultant must be storage distributed in the cluster, because even being a sample
+the result can be big and a single machine couldn't bear too.
 
 So the sampling must be done distributed and it must be done without intrusion
 in the Hadoop, because any change done inside of the framework can propagate collateral
@@ -61,7 +61,7 @@ random sample method~\cite{vitter:1984}.
 
 Another database management system that performs data sample based in random method
 is the {\bf Hive} that is data warehouse system for Hadoop. He done sampling in
-row or block size level. The row level consist in chose randomly the rows
+row or block size level. The row level consist in choose randomly the rows
 according with colunm name, if the column name is not defined then the entire row
 is selected, with the colunm name defined the choice can be done using
 {\bf Bucketized Table} which was hash-clustered by columns~\cite{hiveSample},
@@ -84,48 +84,101 @@ randomly chooses an item from this stream such that each item is equally likely
 to be selected.}"
 
 The Reservoir Sampling is part of the randomized algorithm family and consist in
-chose randomly {\it k} elements from a list {\it L} containing {\it N} items. Normally
-the length N is either unknown or large enough that the memory don't support such
+choose randomly {\it k} elements from a list {\it L} containing {\it N} items. Normally
+the length N is either unknown or large enough that the memory doesn't support such
 list. The algorithm is shown below in pseudocode:
 
-%\begin{algorithm}
-%  \begin{algorithmic}[1]
-	%\Require{$k$ size of sample}
-%	\Statex
-%	\Function{ReservoirSampling}{$k$}
-%		\For{$k$}
-%		\EndFor
-%	\EndFunction
-%  \end{algorithmic}
-%\end{algorithm}
+\begin{algorithm}
+		\caption{Algorithm for Reservoir Sampling \label{alg:sample}}
 
-%\begin{algorithm}
-%		\caption{Algorithm for Reservoir Sampling \label{alg:sample}}
+        \SetKwInOut{Input}{Input}
+        \SetKwInOut{Output}{Output}
+		\Input{$k$ size of sample}
+		\Input{$stream$ data stream with indefided length}
+        \Output{$arraySample$[$k$]}
 
-%        \SetKwInOut{Input}{Input}
-%        \SetKwInOut{Output}{Output}
-%        \Input{$JUT \in Program$}
-%        \Output{$arraySample$[$k$]}
-        
-%        $living^{\mathcal{M}} \leftarrow GenerateMutants(JUT)$\;
+		\For{$i = 1 \to k$} {
+			$arraySample[i] \leftarrow stream[i]$
+		}
 
-%        \ForEach{$d \in newdata$} {
-%                $expected^\mathcal{R} \leftarrow expected^\mathcal{R} + execute(JUT,TC,d)$\;
-%        }
-%
-%        \ForEach{$m \in living^{\mathcal{M}}, d \in newdata$  }{
-%                $actual^\mathcal{R} \leftarrow execute(JUT,m,d)$ \;
-%        }
-        
-%        $killed^\mathcal{M} \leftarrow MutationAnalysis(expected^\mathcal{R}, actual^\mathcal{R}) $\;
-%        $living^\mathcal{M} \leftarrow living^\mathcal{M} - killed^\mathcal{M}$\;
-%        \If {$living^\mathcal{M} \neq \emptyset$}
- %               {       
-%                        $newdata \leftarrow generate(\mathcal{K})$
-%                        }
-%        \Else{exit loop}
-%        \Return{$data^\mathcal{K}$}
+		$currentLength \leftarrow k$
 
-%\end{algorithm}
+		\While{$stream$ != $EOF$} {
+			$currentLength \leftarrow currentLength + 1$
 
+			$rand \leftarrow Random(1, currentLength)$
 
+			\If {$rand \leq k$}
+			{
+				$arraySample[rand] \leftarrow stream[currentLength]$
+			}
+		}
+
+        \Return{$arraySample$}
+\end{algorithm}
+
+The basic idea of this algorithm is build a reservior smaller than the memory. So
+it receive as parameter the number {\it k} that is the resultant sampling length
+and {\it stream} of data that constantly receive new data. Initially, the resultant
+{\it arraySample} is assigned with the first {\it k} items of stream, after until
+the end of stream is sorted randomly one number {\it rand} between 1 and current
+length of data already received, if the random number is smaller or equal than {\it k}
+then the {\it arraySample} position {\it rand} is assigned to new data arrived.
+
+However, choose the number {\it k} is a hard task because the resultant sample must
+be representative, besides the primary memory may not support the array resultant.
+To solve that problem Vitter~\cite{vitter:1985} suggests that the reservoir be stored
+on secundary storage, but this approach is implactible on Hadoop context, because
+the secundary storage is HDFS, so the time of retrieving the reservoir and update
+is very large.
+
+\section{One method for data sampling on Hadoop}
+
+We present one algorithm based on MapReduce paradgm to generate data sample on Hadoop.
+So we will be taking advantage the structure of the framework, consequently all
+aspects related with storage and computing distributed is left for it.
+
+Our idea consist in build one MapReduce program using randomized data sampling.
+As we have seen the random algorithms for data sampling have been used largely in
+database and big data environment. The challenge here is to generate a representative
+sample that is also one of the biggest challenges in statistic area.
+
+First of all, we will present the behavior of the algorithm on map and reduce process
+using the Table~\ref{fig:sampleProcess}, the process receive tree files as example
+file1, file2 and file3, there are two mappers who classified each line of the files
+and generate the output \tuple{lineNumer, content}, after the shuffle step
+agregates each content of the same key
+\tuple{lineNumer, \{content1, content2, ..., contentN\} },
+then the only reducer receives the shuffle output, for each content of the same key
+chooses one random number and if it is less than sample threshold then chooses this
+content, otherwise discards it.
+
+\begin{figure}[htbp]
+	\centering
+	\includegraphics[width=280px,height=500px]{img/sampleProcess.png}
+	\caption{Map and Reduce random sample process}\label{fig:sampleProcess}
+\end{figure}
+
+Now we present the algorithm with the behavior already shown is easier explained
+the algorithm:
+
+\begin{algorithm}
+\begin{algorithmic}[1]
+	\Require{$fileStream$ stream of file lines}
+	\Statex
+	\Function{Map}{$fileStream$}
+
+		\State $lineNumber \leftarrow 1$
+		\State $map<Integer, String> \leftarrow  \{\}$\\
+
+		\ForEach{$line \in fileStream$} {
+
+			\State $line \leftarrow getNextLineFromStream$
+
+			\State $map.put$($lineNumber$, $line$)
+
+		}
+
+	\EndFunction
+\end{algorithmic}
+\end{algorithm}
