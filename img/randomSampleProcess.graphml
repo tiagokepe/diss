@@ -19,7 +19,7 @@
         <y:ProxyAutoBoundsNode>
           <y:Realizers active="0">
             <y:GenericGroupNode configuration="com.yworks.bpmn.Artifact.withShadow">
-              <y:Geometry height="906.9375" width="471.375" x="-187.875" y="-213.31250000000006"/>
+              <y:Geometry height="906.9375" width="471.375" x="-46.80369278350517" y="-179.02433505154644"/>
               <y:Fill color="#FFFFFF" transparent="false"/>
               <y:BorderStyle color="#000000" type="dashed" width="2.0"/>
               <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" hasText="false" height="4.0" modelName="internal" modelPosition="c" textColor="#000000" visible="true" width="4.0" x="233.6875" y="451.46875"/>
@@ -56,7 +56,7 @@
     <node id="n1">
       <data key="d6">
         <y:GenericNode configuration="com.yworks.bpmn.Artifact.withShadow">
-          <y:Geometry height="117.0" width="82.0" x="-159.875" y="-175.81250000000006"/>
+          <y:Geometry height="117.0" width="82.0" x="-18.80369278350517" y="-141.52433505154644"/>
           <y:Fill color="#FFFFFFE6" transparent="false"/>
           <y:BorderStyle color="#000000" type="line" width="2.0"/>
           <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="14" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="52.890625" modelName="free" modelPosition="anywhere" textColor="#000000" visible="true" width="64.634765625" x="6.6826171875" y="42.0546875">- line1F1
@@ -75,7 +75,7 @@
     <node id="n2">
       <data key="d6">
         <y:GenericNode configuration="EntityRelationship_Entity">
-          <y:Geometry height="22.0" width="80.0" x="-159.875" y="-197.81250000000006"/>
+          <y:Geometry height="22.0" width="80.0" x="-18.80369278350517" y="-163.52433505154644"/>
           <y:Fill color="#FFFFFF" color2="#C0C0C0" transparent="false"/>
           <y:BorderStyle color="#000000" type="line" width="2.0"/>
           <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="16" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="22.625" modelName="internal" modelPosition="c" textColor="#000000" visible="true" width="42.1171875" x="18.94140625" y="-0.3125">File1</y:NodeLabel>
@@ -88,7 +88,7 @@
     <node id="n3">
       <data key="d6">
         <y:GenericNode configuration="com.yworks.bpmn.Artifact.withShadow">
-          <y:Geometry height="117.0" width="82.0" x="135.125" y="-175.81250000000006"/>
+          <y:Geometry height="117.0" width="82.0" x="276.1963072164948" y="-141.52433505154644"/>
           <y:Fill color="#FFFFFFE6" transparent="false"/>
           <y:BorderStyle color="#000000" type="line" width="2.0"/>
           <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="14" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="52.890625" modelName="free" modelPosition="anywhere" textColor="#000000" visible="true" width="64.634765625" x="6.6826171875" y="42.0546875">- line1F3
@@ -107,7 +107,7 @@
     <node id="n4">
       <data key="d6">
         <y:GenericNode configuration="EntityRelationship_Entity">
-          <y:Geometry height="22.0" width="80.0" x="135.125" y="-197.81250000000006"/>
+          <y:Geometry height="22.0" width="80.0" x="276.1963072164948" y="-163.52433505154644"/>
           <y:Fill color="#FFFFFF" color2="#C0C0C0" transparent="false"/>
           <y:BorderStyle color="#000000" type="line" width="2.0"/>
           <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="16" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="22.625" modelName="internal" modelPosition="c" textColor="#000000" visible="true" width="42.1171875" x="18.94140625" y="-0.3125">File3</y:NodeLabel>
@@ -120,7 +120,7 @@
     <node id="n5">
       <data key="d6">
         <y:GenericNode configuration="com.yworks.bpmn.Artifact.withShadow">
-          <y:Geometry height="117.0" width="82.0" x="-12.375" y="-175.81250000000006"/>
+          <y:Geometry height="117.0" width="82.0" x="128.69630721649483" y="-141.52433505154644"/>
           <y:Fill color="#FFFFFFE6" transparent="false"/>
           <y:BorderStyle color="#000000" type="line" width="2.0"/>
           <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="14" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="52.890625" modelName="free" modelPosition="anywhere" textColor="#000000" visible="true" width="64.634765625" x="6.6826171875" y="42.0546875">- line1F1
@@ -139,7 +139,7 @@
     <node id="n6">
       <data key="d6">
         <y:GenericNode configuration="EntityRelationship_Entity">
-          <y:Geometry height="22.0" width="80.0" x="-12.375" y="-197.81250000000006"/>
+          <y:Geometry height="22.0" width="80.0" x="128.69630721649483" y="-163.52433505154644"/>
           <y:Fill color="#FFFFFF" color2="#C0C0C0" transparent="false"/>
           <y:BorderStyle color="#000000" type="line" width="2.0"/>
           <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="16" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="22.625" modelName="internal" modelPosition="c" textColor="#000000" visible="true" width="42.1171875" x="18.94140625" y="-0.3125">File2</y:NodeLabel>
@@ -152,27 +152,27 @@
     <node id="n7">
       <data key="d6">
         <y:GenericNode configuration="BevelNode2">
-          <y:Geometry height="65.0" width="73.0" x="-79.875" y="2.937499999999943"/>
+          <y:Geometry height="65.0" width="73.0" x="61.19630721649483" y="37.225664948453556"/>
           <y:Fill color="#003300" transparent="false"/>
           <y:BorderStyle hasColor="false" type="line" width="1.0"/>
-          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="16" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="22.625" modelName="internal" modelPosition="c" textColor="#FFFFFF" visible="true" width="54.1875" x="9.40625" y="21.1875">Maper</y:NodeLabel>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="16" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="22.625" modelName="internal" modelPosition="c" textColor="#FFFFFF" visible="true" width="64.34375" x="4.328125" y="21.1875">Mapper</y:NodeLabel>
         </y:GenericNode>
       </data>
     </node>
     <node id="n8">
       <data key="d6">
         <y:GenericNode configuration="BevelNode2">
-          <y:Geometry height="65.0" width="73.0" x="139.625" y="2.937499999999943"/>
+          <y:Geometry height="65.0" width="73.0" x="280.6963072164948" y="37.225664948453556"/>
           <y:Fill color="#003300" transparent="false"/>
           <y:BorderStyle hasColor="false" type="line" width="1.0"/>
-          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="16" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="22.625" modelName="internal" modelPosition="c" textColor="#FFFFFF" visible="true" width="54.1875" x="9.40625" y="21.1875">Maper</y:NodeLabel>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="16" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="22.625" modelName="internal" modelPosition="c" textColor="#FFFFFF" visible="true" width="64.34375" x="4.328125" y="21.1875">Mapper</y:NodeLabel>
         </y:GenericNode>
       </data>
     </node>
     <node id="n9">
       <data key="d6">
         <y:GenericNode configuration="BevelNode">
-          <y:Geometry height="96.0" width="82.0" x="-84.375" y="106.93749999999994"/>
+          <y:Geometry height="96.0" width="82.0" x="56.69630721649483" y="141.22566494845356"/>
           <y:Fill color="#FFFFFF" transparent="false"/>
           <y:BorderStyle hasColor="false" type="line" width="1.0"/>
           <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="14" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="101.78125" modelName="internal" modelPosition="c" textColor="#000000" visible="true" width="96.4013671875" x="-7.20068359375" y="-2.890625">&lt;1, line1F1&gt;
@@ -187,7 +187,7 @@
     <node id="n10">
       <data key="d6">
         <y:GenericNode configuration="BevelNode">
-          <y:Geometry height="65.0" width="82.0" x="135.125" y="106.93749999999994"/>
+          <y:Geometry height="65.0" width="82.0" x="276.1963072164948" y="141.22566494845356"/>
           <y:Fill color="#FFFFFF" transparent="false"/>
           <y:BorderStyle hasColor="false" type="line" width="1.0"/>
           <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="14" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="52.890625" modelName="internal" modelPosition="c" textColor="#000000" visible="true" width="96.4013671875" x="-7.20068359375" y="6.0546875">&lt;1, line1F3&gt;
@@ -199,7 +199,7 @@
     <node id="n11">
       <data key="d6">
         <y:GenericNode configuration="BevelNode2">
-          <y:Geometry height="65.0" width="73.0" x="32.125" y="216.93749999999994"/>
+          <y:Geometry height="65.0" width="73.0" x="173.19630721649483" y="251.22566494845356"/>
           <y:Fill color="#003300" transparent="false"/>
           <y:BorderStyle hasColor="false" type="line" width="1.0"/>
           <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="16" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="22.625" modelName="internal" modelPosition="c" textColor="#FFFFFF" visible="true" width="59.9921875" x="6.50390625" y="21.1875">Shuffle</y:NodeLabel>
@@ -209,7 +209,7 @@
     <node id="n12">
       <data key="d6">
         <y:GenericNode configuration="BevelNode">
-          <y:Geometry height="65.0" width="204.5" x="-33.625" y="321.68749999999994"/>
+          <y:Geometry height="65.0" width="204.5" x="107.44630721649483" y="355.9756649484535"/>
           <y:Fill color="#FFFFFF" transparent="false"/>
           <y:BorderStyle hasColor="false" type="line" width="1.0"/>
           <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="14" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="52.890625" modelName="internal" modelPosition="c" textColor="#000000" visible="true" width="234.2822265625" x="-14.89111328125" y="6.0546875">&lt;1, {line1F1, line1F2, line1F3}&gt;
@@ -221,17 +221,18 @@
     <node id="n13">
       <data key="d6">
         <y:GenericNode configuration="BevelNode2">
-          <y:Geometry height="65.0" width="73.0" x="32.125" y="426.43749999999994"/>
+          <y:Geometry height="65.0" width="73.0" x="173.19630721649483" y="460.7256649484535"/>
           <y:Fill color="#003300" transparent="false"/>
           <y:BorderStyle hasColor="false" type="line" width="1.0"/>
           <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="16" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="22.625" modelName="internal" modelPosition="c" textColor="#FFFFFF" visible="true" width="70.4765625" x="1.26171875" y="21.1875">Reducer</y:NodeLabel>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" hasText="false" height="4.0" modelName="internal" modelPosition="c" textColor="#000000" visible="true" width="4.0" x="34.5" y="30.5"/>
         </y:GenericNode>
       </data>
     </node>
     <node id="n14">
       <data key="d6">
         <y:GenericNode configuration="com.yworks.bpmn.Artifact.withShadow">
-          <y:Geometry height="117.0" width="93.25" x="23.0" y="559.1875"/>
+          <y:Geometry height="117.0" width="93.25" x="164.07130721649483" y="593.4756649484536"/>
           <y:Fill color="#FFFFFFE6" transparent="false"/>
           <y:BorderStyle color="#000000" type="line" width="2.0"/>
           <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="14" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="69.1875" modelName="free" modelPosition="anywhere" textColor="#000000" visible="true" width="64.634765625" x="6.6826171875" y="42.0546875">- line1F1
@@ -251,7 +252,7 @@
     <node id="n15">
       <data key="d6">
         <y:GenericNode configuration="EntityRelationship_Entity">
-          <y:Geometry height="22.0" width="91.25" x="23.0" y="537.1875"/>
+          <y:Geometry height="22.0" width="91.25" x="164.07130721649483" y="571.4756649484536"/>
           <y:Fill color="#FFFFFF" color2="#C0C0C0" transparent="false"/>
           <y:BorderStyle color="#000000" type="line" width="2.0"/>
           <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="16" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="22.625" modelName="internal" modelPosition="c" textColor="#000000" visible="true" width="87.453125" x="1.8984375" y="-0.3125">Result FIle</y:NodeLabel>
@@ -267,7 +268,7 @@
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
           <y:LineStyle color="#000000" type="line" width="1.0"/>
           <y:Arrows source="none" target="standard"/>
-          <y:EdgeLabel alignment="center" distance="2.0" fontFamily="Dialog" fontSize="14" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="20.296875" modelName="six_pos" modelPosition="head" preferredPlacement="anywhere" ratio="0.5" textColor="#000080" visible="true" width="102.9775390625" x="-94.73886882575951" y="20.714660644531193">Input stream1</y:EdgeLabel>
+          <y:EdgeLabel alignment="center" distance="2.0" fontFamily="Dialog" fontSize="14" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="20.296875" modelName="six_pos" modelPosition="head" preferredPlacement="anywhere" ratio="0.5" textColor="#000080" visible="true" width="102.9775390625" x="-94.73886974525101" y="20.71466145419086">Input stream1</y:EdgeLabel>
           <y:BendStyle smoothed="false"/>
         </y:PolyLineEdge>
       </data>
@@ -278,7 +279,7 @@
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
           <y:LineStyle color="#000000" type="line" width="1.0"/>
           <y:Arrows source="none" target="standard"/>
-          <y:EdgeLabel alignment="center" distance="2.0" fontFamily="Dialog" fontSize="14" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="20.296875" modelName="six_pos" modelPosition="tail" preferredPlacement="anywhere" ratio="0.5" textColor="#000080" visible="true" width="102.9775390625" x="-7.764029894639933" y="20.714660644531193">Input stream2</y:EdgeLabel>
+          <y:EdgeLabel alignment="center" distance="2.0" fontFamily="Dialog" fontSize="14" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="20.296875" modelName="six_pos" modelPosition="tail" preferredPlacement="anywhere" ratio="0.5" textColor="#000080" visible="true" width="102.9775390625" x="-7.764026999434179" y="20.71466145419086">Input stream2</y:EdgeLabel>
           <y:BendStyle smoothed="false"/>
         </y:PolyLineEdge>
       </data>
@@ -289,7 +290,7 @@
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
           <y:LineStyle color="#000000" type="line" width="1.0"/>
           <y:Arrows source="none" target="standard"/>
-          <y:EdgeLabel alignment="center" distance="2.0" fontFamily="Dialog" fontSize="14" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="20.296875" modelName="six_pos" modelPosition="tail" preferredPlacement="anywhere" ratio="0.5" textColor="#000080" visible="true" width="102.9775390625" x="2.0" y="20.714660644531193">Input stream3</y:EdgeLabel>
+          <y:EdgeLabel alignment="center" distance="2.0" fontFamily="Dialog" fontSize="14" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="20.296875" modelName="six_pos" modelPosition="tail" preferredPlacement="anywhere" ratio="0.5" textColor="#000080" visible="true" width="102.9775390625" x="1.9999876364166767" y="20.71466145419086">Input stream3</y:EdgeLabel>
           <y:BendStyle smoothed="false"/>
         </y:PolyLineEdge>
       </data>
@@ -300,7 +301,7 @@
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
           <y:LineStyle color="#000000" type="line" width="1.0"/>
           <y:Arrows source="none" target="standard"/>
-          <y:EdgeLabel alignment="center" distance="2.0" fontFamily="Dialog" fontSize="14" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="20.296875" modelName="six_pos" modelPosition="tail" preferredPlacement="anywhere" ratio="0.5" textColor="#000080" visible="true" width="64.0810546875" x="2.0" y="9.380004882812443">Mapping</y:EdgeLabel>
+          <y:EdgeLabel alignment="center" distance="2.0" fontFamily="Dialog" fontSize="14" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="20.296875" modelName="six_pos" modelPosition="tail" preferredPlacement="anywhere" ratio="0.5" textColor="#000080" visible="true" width="64.0810546875" x="2.0000028952057676" y="9.380007599820743">Mapping</y:EdgeLabel>
           <y:BendStyle smoothed="false"/>
         </y:PolyLineEdge>
       </data>
@@ -311,7 +312,7 @@
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
           <y:LineStyle color="#000000" type="line" width="1.0"/>
           <y:Arrows source="none" target="standard"/>
-          <y:EdgeLabel alignment="center" distance="2.0" fontFamily="Dialog" fontSize="14" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="20.296875" modelName="six_pos" modelPosition="shead" preferredPlacement="anywhere" ratio="0.5" textColor="#000080" visible="true" width="64.0810546875" x="-66.0810546875" y="9.376953124999943">Mapping</y:EdgeLabel>
+          <y:EdgeLabel alignment="center" distance="2.0" fontFamily="Dialog" fontSize="14" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="20.296875" modelName="six_pos" modelPosition="shead" preferredPlacement="anywhere" ratio="0.5" textColor="#000080" visible="true" width="64.0810546875" x="-66.08106705108332" y="9.376955842008243">Mapping</y:EdgeLabel>
           <y:BendStyle smoothed="false"/>
         </y:PolyLineEdge>
       </data>
@@ -342,7 +343,7 @@
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
           <y:LineStyle color="#000000" type="line" width="1.0"/>
           <y:Arrows source="none" target="standard"/>
-          <y:EdgeLabel alignment="center" distance="2.0" fontFamily="Dialog" fontSize="14" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="20.296875" modelName="six_pos" modelPosition="tail" preferredPlacement="anywhere" ratio="0.5" textColor="#000080" visible="true" width="66.029296875" x="2.0" y="9.722351074218693">Shuffling</y:EdgeLabel>
+          <y:EdgeLabel alignment="center" distance="2.0" fontFamily="Dialog" fontSize="14" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="20.296875" modelName="six_pos" modelPosition="tail" preferredPlacement="anywhere" ratio="0.5" textColor="#000080" visible="true" width="66.029296875" x="2.0000028952057676" y="9.722338532437902">Shuffling</y:EdgeLabel>
           <y:BendStyle smoothed="false"/>
         </y:PolyLineEdge>
       </data>
@@ -353,7 +354,7 @@
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
           <y:LineStyle color="#000000" type="line" width="1.0"/>
           <y:Arrows source="none" target="standard"/>
-          <y:EdgeLabel alignment="center" distance="2.0" fontFamily="Dialog" fontSize="14" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="20.296875" modelName="free" modelPosition="anywhere" preferredPlacement="anywhere" ratio="0.5" textColor="#000080" visible="true" width="96.873046875" x="5.75" y="4.722351074218693">Reduce input</y:EdgeLabel>
+          <y:EdgeLabel alignment="center" distance="2.0" fontFamily="Dialog" fontSize="14" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="20.296875" modelName="free" modelPosition="anywhere" preferredPlacement="anywhere" ratio="0.5" textColor="#000080" visible="true" width="96.873046875" x="5.750002895205739" y="4.722338532437902">Reduce input</y:EdgeLabel>
           <y:BendStyle smoothed="false"/>
         </y:PolyLineEdge>
       </data>
@@ -364,7 +365,7 @@
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
           <y:LineStyle color="#000000" type="line" width="1.0"/>
           <y:Arrows source="none" target="standard"/>
-          <y:EdgeLabel alignment="center" distance="2.0" fontFamily="Dialog" fontSize="14" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="20.296875" modelName="six_pos" modelPosition="tail" preferredPlacement="anywhere" ratio="0.5" textColor="#000080" visible="true" width="117.6201171875" x="2.0" y="12.7601318359375">Random sample</y:EdgeLabel>
+          <y:EdgeLabel alignment="center" distance="2.0" fontFamily="Dialog" fontSize="14" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="20.296875" modelName="six_pos" modelPosition="tail" preferredPlacement="anywhere" ratio="0.5" textColor="#000080" visible="true" width="104.0029296875" x="2.000002895205739" y="12.760149811734891">Ouput Reduce</y:EdgeLabel>
           <y:BendStyle smoothed="false"/>
         </y:PolyLineEdge>
       </data>

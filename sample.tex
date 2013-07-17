@@ -1,6 +1,9 @@
 \chapter{Sampling on Hadoop} % (fold)
 \label{cha:sample}
 
+In this chapter we present one method for data sampling on hadoop that is basead
+in a random algorithm.
+
 \section{Motivation for sampling}
 
 One relevant aspect in Big Data environment is to work with vast amounts of data,
@@ -144,7 +147,7 @@ database and big data environment. The challenge here is to generate a represent
 sample that is also one of the biggest challenges in statistic area.
 
 First of all, we will present the behavior of the algorithm on map and reduce process
-using the Table~\ref{fig:sampleProcess}, the process receive tree files as example
+using the Figure~\ref{fig:sampleProcess}, the process receive tree files as example
 file1, file2 and file3, there are two mappers who classified each line of the files
 and generate the output \tuple{lineNumer, content}, after the shuffle step
 agregates each content of the same key
@@ -152,33 +155,80 @@ agregates each content of the same key
 then the only reducer receives the shuffle output, for each content of the same key
 chooses one random number and if it is less than sample threshold then chooses this
 content, otherwise discards it.
-
+\\
+\\
+\\
+\\
 \begin{figure}[htbp]
 	\centering
 	\includegraphics[width=280px,height=500px]{img/sampleProcess.png}
 	\caption{Map and Reduce random sample process}\label{fig:sampleProcess}
 \end{figure}
 
-Now we present the algorithm with the behavior already shown is easier explained
-the algorithm:
+With the process behavior already shown is easier explained the algorithm, it was
+splited in map and reduce function:
 
 \begin{algorithm}
-\begin{algorithmic}[1]
-	\Require{$fileStream$ stream of file lines}
-	\Statex
-	\Function{Map}{$fileStream$}
+		\caption{Map function for data sample \label{alg:map}}
 
-		\State $lineNumber \leftarrow 1$
-		\State $map<Integer, String> \leftarrow  \{\}$\\
+        \SetKwInOut{Input}{Input}
+        \SetKwInOut{Output}{Output}
+		\Input{$fileStream$ 	stream of file lines}
+        \Output{$map<Integer, String>$ 	list of key-value}
 
-		\ForEach{$line \in fileStream$} {
+		$lineNumber \leftarrow 1$\\
+		$map \leftarrow  \{\}$
 
-			\State $line \leftarrow getNextLineFromStream$
+		\For{\textbf{each} $line \in fileStream$} {
 
-			\State $map.put$($lineNumber$, $line$)
+			$line \leftarrow fileStream.getNextLine()$
+
+			$map.put$($lineNumber$, $line$)
+
+			$lineNumber$++
 
 		}
 
-	\EndFunction
-\end{algorithmic}
+        \Return{$map$}
 \end{algorithm}
+
+The map function consist basically in classify each line in the file stream with
+it respective order of processing, then emits the intermediate key-value pair \tuple{lineNumer, lineContent},
+each pair is added in a map structure that is the output of the map function. After
+the shuffle phase aggregates values that share the same key. This aggregated is
+the input for reduce function:
+
+\begin{algorithm}
+		\caption{Reduce function for data sample \label{alg:reduce}}
+
+        \SetKwInOut{Input}{Input}
+        \SetKwInOut{Output}{Output}
+		\Input{$mapList<Integer, List<String>>$ list of key-value aggregated by shuffle phase}
+        \Output{$list$ of selected lines}
+
+		$list \leftarrow  \{\}$
+
+		\For{\textbf{each} $key \in mapList$} {
+
+			$length \leftarrow mapList.get(key).length()$
+
+			\For{\textbf{each} $line \in key$} {
+				$rand \leftarrow random(0, length - 1)$
+
+				\If{$rand < length$} {
+					$list.add(line)$
+				}
+
+			}
+
+		}
+
+        \Return{$list$}
+\end{algorithm}
+
+The reduce function performs the sampling strictly speaking. First it iterates in
+each key belonging of the input list, each line that share the same key, i.e. the
+same order of processing, it chooses one random number between the 0 and the amount
+of line for the same key at least one, if this random number is less than amount
+of lines then the value is added to resultant list. So in the end of process we
+obtain a data sample.
