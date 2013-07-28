@@ -311,35 +311,3 @@ Let's explain all rules involving our grammar:
 		boolean	value that can be {\bf true} or {\bf false}.
 
 \end{enumerate}
-
-One use case of the DSL is shown below, it contains the job name \textbf{WordCount}
-and your set of initial knobs. This set forms the initial population for bacteriological
-algorithm, each knob set ({\bf knobs}) represents one individual and one single
-knob corresponds one gene of individual, any change is done on gene level i.e.
-on knob level.
-
-\singlespacing
-\begin{listing}[H]
-\begin{minted}[mathescape,frame=lines,framesep=2mm,fontfamily=courier,fontsize=\scriptsize]{python}
-Job WordCount {
-	knobs {
-		"dfs.block.size" int 1024 1048576 = 4096
-		"io.sort.spill.percent" float 0.0 1.0 = 0.5 
-		"mapred.map.tasks.speculative.execution" boolean = false
-	}
-	knobs {
-		"dfs.block.size" int 1024 1048576 = 1024
-		"io.sort.spill.percent" float 0.0 1.0 = 0.08
-		"mapred.map.tasks.speculative.execution" boolean = false
-	}
-	knobs {
-		"dfs.block.size" int 1024 1048576 = 1048576
-		"io.sort.spill.percent" float 0.0 1.0 = 1.0
-		"mapred.map.tasks.speculative.execution" boolean = true
-	}
-}
-\end{minted}
-\caption{Usage of DSL Proposal} 
-\label{listing:usageDSL}
-\end{listing}
-

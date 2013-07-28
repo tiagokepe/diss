@@ -202,7 +202,7 @@
           <y:Geometry height="65.0" width="73.0" x="173.19630721649483" y="251.22566494845356"/>
           <y:Fill color="#003300" transparent="false"/>
           <y:BorderStyle hasColor="false" type="line" width="1.0"/>
-          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="16" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="22.625" modelName="internal" modelPosition="c" textColor="#FFFFFF" visible="true" width="59.9921875" x="6.50390625" y="21.1875">Shuffle</y:NodeLabel>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="16" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="22.625" modelName="internal" modelPosition="c" textColor="#FFFFFF" visible="true" width="59.9921875" x="6.50390625" y="21.18749999999997">Shuffle</y:NodeLabel>
         </y:GenericNode>
       </data>
     </node>
@@ -221,11 +221,11 @@
     <node id="n13">
       <data key="d6">
         <y:GenericNode configuration="BevelNode2">
-          <y:Geometry height="65.0" width="73.0" x="173.19630721649483" y="460.7256649484535"/>
+          <y:Geometry height="65.0" width="83.125" x="168.13380721649483" y="460.7256649484535"/>
           <y:Fill color="#003300" transparent="false"/>
           <y:BorderStyle hasColor="false" type="line" width="1.0"/>
-          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="16" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="22.625" modelName="internal" modelPosition="c" textColor="#FFFFFF" visible="true" width="70.4765625" x="1.26171875" y="21.1875">Reducer</y:NodeLabel>
-          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" hasText="false" height="4.0" modelName="internal" modelPosition="c" textColor="#000000" visible="true" width="4.0" x="34.5" y="30.5"/>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="16" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="22.625" modelName="internal" modelPosition="c" textColor="#FFFFFF" visible="true" width="70.4765625" x="6.32421875" y="21.1875">Reducer</y:NodeLabel>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" hasText="false" height="4.0" modelName="internal" modelPosition="c" textColor="#000000" visible="true" width="4.0" x="39.5625" y="30.5"/>
         </y:GenericNode>
       </data>
     </node>
@@ -365,7 +365,7 @@
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
           <y:LineStyle color="#000000" type="line" width="1.0"/>
           <y:Arrows source="none" target="standard"/>
-          <y:EdgeLabel alignment="center" distance="2.0" fontFamily="Dialog" fontSize="14" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="20.296875" modelName="six_pos" modelPosition="tail" preferredPlacement="anywhere" ratio="0.5" textColor="#000080" visible="true" width="104.0029296875" x="2.000002895205739" y="12.760149811734891">Ouput Reduce</y:EdgeLabel>
+          <y:EdgeLabel alignment="center" distance="2.0" fontFamily="Dialog" fontSize="14" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="20.296875" modelName="six_pos" modelPosition="tail" preferredPlacement="anywhere" ratio="0.5" textColor="#000080" visible="true" width="107.0380859375" x="2.000002895205739" y="12.760149811734891">Reduce output</y:EdgeLabel>
           <y:BendStyle smoothed="false"/>
         </y:PolyLineEdge>
       </data>
