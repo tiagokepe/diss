@@ -6,98 +6,88 @@ present the organization of the document.
 
 \section{Motivation}
 
-Currently with the popularity of internet and phenomenon of the social
-networks a large amount of data is generated day-to-day. To analyse and
-process such quantity of data is needed a big computing power that one
-single machine could not analyse such data. To solve it the big companies,
-researchers and governments are using distributed computation. To perform
-the distributed computation efficiently the data storage must be simple
-and so to allow parallel processing. A model that has such features
-is the key-value model and the interface with this model is MapReduce
-paradigm \cite{Dean:2004}.
+Nowadays the big companies are processing and generating a vast amount of data
+day-to-day. This companies are growing investing in distributed and parallel computing
+to process such data. To perform the distributed computing efficiently the data
+storage must be simple in order to allow parallel processing. The key-value model
+is a possible solution to build applications to data distributed processing, e.g.
+the MR programing paradigm which is based on key-value model\cite{Dean:2004}.
 
 MapReduce became the industry de facto standard for parallel processing.
 Attractive features such as scalability and reliability motivate many large companies
 such as Facebook, Google, Yahoo and research institutes to adopt this new programming
-paradigm. Key-value model and MapReduce paradigm are implemented on the framework
-Hadoop, an open-source implementation of MapReduce, and these organizations rely
+paradigm. Key-value model and MR paradigm are implemented on the framework Hadoop,
+an open-source implementation of MapReduce, and these organizations rely
 on Hadoop~\cite{White:2009} to process their information. Besides Hadoop, several
 other implementations are available: Greenplum MapReduce~\cite{Greenplum:2008},
-Aster Data~\cite{Aster:2011}, Nokia Disco~\cite{Mundkur:2011}, 
-Microsoft Dryad~\cite{Isard:2007}, among others.
+Aster Data~\cite{Aster:2011}, Nokia Disco~\cite{Mundkur:2011} and
+Microsoft Dryad~\cite{Isard:2007}.
 
 MapReduce has a simplified programming model, where data processing algorithms 
 are implemented as instances of two higher-order functions: Map and Reduce. All 
 complex issues related to distributed processing, such as scalability, data
-distribution and reconciliation, concurrence, fault tolerance, etc., are managed
+distribution and reconciliation, concurrence and fault tolerance are managed
 by the framework. The main complexity that is left to the developer of a 
 MapReduce-based application (also called a job) lies in the design decisions made 
-to split the application specific algorithm into two higher-order functions. Even
-if some decisions may result in a functionally correct application, bad design
+to split the application specific algorithm into the two higher-order functions.
+Even if some decisions may result in a functionally correct application, bad design
 choices might also lead to poor resource usage.
 
-Implement jobs on Hadoop is simple, but there are many of knobs to adjust that
-depends of the data stored and job running. A good configuration can improve the
-job performance and one relevant aspect is that the MapReduce jobs work with
-large amounts of data, such fact is the main barrier to find a good configuration.
-Therefore a data sample is essencial, but generate a representative and relevant
-data sampling is hard and a bad sampling may not represent several aspects
-related to the computation in large-scale: efficient resource usage, correct
-merge of data, intermediate data, etc.
-
-Hence is very important to adjust the configuration knobs for each job and this
-configutarion must be specific for own job. However, according with the cluster
-variation, eg. to add or to remove machines, the data insertion or remotion,
-may be need to adjust again the job configuration.
-
-Find a good configuration is not so easy and may spend much time. So one way
-to automate the job configuration is very useful for users.
+Implement jobs on Hadoop is simple, but there are many of knobs to adjust depending
+on the available resources (e.g. input data, online machines, network bandwidth, etc.)
+that improve the job performance. One relevant aspect is that the MR jobs are expected
+to work with large amounts of data, which can be the main barrier to find a good
+configuration~\cite{Chen:2012}. Therefore, data sampling can be useful to improve
+on processing adjust of parameters instead of processing all data set how is done
+in~\cite{starfish}. But generate a representative and relevant data sampling is
+hard and a bad sampling may not represent several aspects related to the computation
+in large-scale: efficient resource usage, correct merge of data and intermediate data.
 
 \section{Objectives}
-Our objective is to propose autoconfiguration of Hadoop, for this we intend to
-use an evolutionary algorithm \cite{baudry} to select good configurations
-of the jobs. Based in our knowledge the best way to find such configurations is
-to run the jobs with its and analyse the performance, but a crucial trouble is
-the large amount of data stored that can increase exponentially the test time of
-the job. One way to solve this trouble is to create a data sample. We propose
-one methodology to implement a data sample using key-value model and MapReduce
-paradigm.
+Our objective is to propose a self-tuning based on data sampling over Hadoop, so
+we intend to use an evolutionary algorithm \cite{baudry} to select good configurations
+for MR jobs. Based in our knowledge the best way to find such configurations is
+to run the jobs with its and analyse the performance, normally this process is
+done manually. But a crucial trouble is the large amount of data stored that can
+increase exponentially the test time of the job. One way to solve this trouble is
+to create a data sample. We propose one method to implement data sampling using
+key-value model and MR paradigm.
 
 \section{Contribution}
 
 We present an original approach to automate Hadoop job configuration, our
-implementation is basead in an bacteriological algorithm \cite{baudry} and in
-order to use this algorithm we develop a method to obtain data sample on
-hadoop cluster. To develop this method we needed to consider a lot of
-aspects related the paradigm MapReduce, key-value model and others hadoop
-particularities. Our framework has an user interface which have been implementing
-with domain specific language ({\bf DSL}), it's a front end for the users and
-facilitates the use of the our framework, after ran it the user can obtain the
-job configuration resultant, so the users have a tool end-to-end.
+approach is based on an bacteriological algorithm \cite{baudry} in order to avoid
+run it on all data storage we develop one method to obtain data samples from hadoop
+input data. For data sampling we considered a lot of aspects related the paradigm MR,
+key-value model and others hadoop particularities. Our approach presents an user
+interface which through a domain specific language ({\bf DSL}), to facilitate the
+user iteraction with data sampling and drive tuning procedures.
 
-The work presented here contributes to the establishment a framework to automate
-Hadoop job configuration, through the following proposals:
+Our proposal intents to establish a framework to automate Hadoop job configuration,
+through the following proposals:
 \begin{itemize}
-	\item a interface for users basead on domain specific language;
-	\item an algorithm to automate a good choice of jobs configuration;
+	\item an algorithm to automate a self-tuning;
 	\item a method for sampling data on Hadoop clusters.
+	\item an interface for users based on domain specific language;
 \end{itemize}
 
-As measure of performance we used the latency time that the job led to
-conclude. Furthermore, we intend to use other measures of performance such as
-amount of intermidiate data generate, network usage and among others.
+As measure of performance, we used the latency time that the job led to conclude.
+Furthermore, we intend to use other measures of performance such as amount of intermidiate data,
+network usage and cpu usage.
 
 \section{Outline}
 
 \begin{itemize}
-	\item Chapter \ref{cha:background} introduces the fundamental concepts of the MapReduce framework.
+	\item Chapter \ref{cha:background} introduces the fundamental concepts of the
+	key-value model, MR paradigm and hadoop framework.
     \item Chapter \ref{cha:bacAlg} presents the bacteriological algorithm.
     \item Chapter \ref{cha:sample} presents the method to generate sampling
     data.
-    \item Chapter \ref{cha:dsl} introduces the concepts of the domain specific language.
-	\item In chapter \ref{cha:proposal} we presents our framework with all components.
-    \item In chapter \ref{cha:experiments} we discussed a case study performed with our solution.
-	\item In chapter \ref{cha:conclusion} we conclude our results.
+    \item Chapter \ref{cha:dsl} introduces the concepts of the domain specific language
+	and our proposal DLS.
+	\item Chapter \ref{cha:proposal} we presents our framework with all components.
+    \item Chapter \ref{cha:experiments} we discussed a case study performed with our solution.
+	\item Chapter \ref{cha:conclusion} we conclude our results.
 \end{itemize}
 
 %The next section introduces the  fundamental concepts of the MapReduce framework and briefly describes different testing scenarios for MapReduce applications. Chapter~\ref{cha:proposal} introduces two test quality assessment methods, describes methods to data test generation and meta-heuristic search methods. Two data test generators are presented with their results.
