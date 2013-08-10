@@ -1,0 +1,23 @@
+\chapter{Initial experiments} % (fold)
+\label{cha:experiments}
+
+In this chapter we present initial experiments to show advantages of our proposal.
+First we present study case to show the high convergence of BA.
+
+\section{Bacteriological algorithm convergence}
+
+Our first study case aims to show the high convergence of BA. We ran our solution
+in Hadoop standalone mode. The test consisted in run the BA with population
+size 3, i.e. with three set of knobs per generation, each set of knobs had 10 knobs.
+The input files were generated with hadoop job called {\it randomtextwriter} generating
+10GB of random text file. The sample percent was of 10 percent of the input, i.e.
+1GB of data.
+
+We ran the BA in three rounds, up to three generations, up to six generations and
+last one up to twelve generations. The input set of knobs for the first round was
+generated randomly, after for the next round the set of knobs were the top three
+of the previous round. So, ocurring feedback of the process.
+
+We can realize with the three graphics that passing generations the time never
+recede, this characteristic occurs because of the memorization operator. Another
+aspect is t 

@@ -1,101 +1,89 @@
 \chapter{Domain-Specific Language} % (fold)
 \label{cha:dsl}
 
-In this chapter we present some fundamentals of Domain-Specific Language and one
-language in our domain that will be helpful for user utilize our framework.
+In this chapter we present some fundamentals of Domain-Specific Language(DSL) and
+one language as interface with the users and self-tuning.
 
-A \textit{domain-specific language} (DSL) is way to approach of some specific
+A \textit{DSL} is way to approach of some specific
 context through appropriate notations and abstractions~\cite{deursen:2000}. DSL
 transforms a particular problem domain into a context intelligible for expert
 users that can work in a familiar environment.
 
 Problem domain is a crucial term of DSL that requires prior background of the
-developers in the specific context, so the developers must be expert in the domain
-in order to develop DSLs that cover all features required for the users. There are
+developers in the specific context. The developers must be expert in the domain
+in order to develop a DSL that cover the features required for the users. There are
 a lot of examples of DSLs in differents domains, \textbf{(LEX, YACC, Make, SQL,
 HTML, CSS, LATEX, etc.)} are classical examples of DSLs~\cite{bentley:1986}.
 
-DSLs are usually focused in its domains containg notations and specific abstractions,
-normally DSLs are \textit{small} and \textit{declarative} languages. However, a
-DSL can be extended to others domains, in this case such DSL is
-general-purpose language (GPL), because its expressive power is not restricts
+DLSs normally focus in specific domain, containing notations and specific abstractions.
+Also it is \textit{small} and \textit{declarative} languages. But, a
+DSL can be extended to differents domains, such DSL is called general-purpose
+language (GPL), because its expressiveness power is not restrict to
 an exclusive domain, examples of such DSLs are \textbf{Cobol and Fortran}, which
-could be viewed as languages focused towards the domain of business and scientific
-programming  ~\cite{deursen:2000}, respectively, but they are not restricts just
-in this domains.
+could be viewed as languages focused on the domain of business and scientific
+programming  ~\cite{deursen:2000}.
 
 DSL are used in several big areas, such \textbf{Software Engineering}, 
 \textbf{Artificial Intelligence}, \textbf{Computers Architecture}(in this area a
 good exemple is VHSIC Hardware Description Language (VHDL), where VHSIC mean 
 {\bf V}ery {\bf H}igh {\bf S}peed {\bf I}ntegrated {\bf C}ircuits), \textbf{Database
-Systems}(SQL is a classical example already cited), \textbf{Network}(where its
+Systems}(SQL, Datalog, QBE, Bloom), \textbf{Network}(where its
 protocols are examples of DSLs), \textbf{Distribuited Systems}, \textbf{Multi-Media}
-and among others. A current area that have been emerged recently is \textbf{Big Data},
-this area may be considered as a sub area of Database, but is has many
+and among others. A current area that have been emerged recently is \textbf{Big Data}.
+This area may be considered as a sub area of Database, but is has many
 particularities that involve a mix features of Database and Distributed Systems.
 
 \section{DSL Design Methodology}
 
-The first step to create a new DSL is identify the problem domain. Depending on
-context is not so easy to identify the domain, can there are many particularities
-involving the full understanding of the domain, also the context can cover more 
-than one domain, for example the GPLs. In other cases the correct identification
-of the domain is fast and there is not margin for doubts and equivocation. In
-both cases the foreknowledge of the developers is the factor that more influences
-in good or bad DSLs resultants.
+The first step to create a new DSL is identifing the problem domain. Depending on
+context is not so easy to abstract the complete knowledge of the domain, because
+the developers must have a deep prior knowledge of the context, so considering all
+variables and intrinsics aspects belonging to the domain. Furthermore, some times
+the context can cover more than one domain, for example the GPLs. In other cases
+the correct abstraction of the domain is fast and there is not margin for doubts
+and equivocation. In both cases the foreknowledge of the developers is the factor
+that more influences in good or bad DSLs resultants.
 
-After to identify the problem domain the developer must abstract all relevant 
-aspects in this domain. This is an important phase in building of any software,
-similar the phase of definition of the business rules, when architects and
-developers decide what aspects are relevants or not for the users. Such decisions
-are going to reflect in the usability and somehow acceptance of the new software.
+After identifying the problem domain the developer must abstract all relevant 
+aspects from it. For example {\it VHDL}, it agroup semantic notations and operations
+on logical circuit that allows to express logical components, bus, datapath and
+control signals. With these four components we can describe any logical circuit
+since a ALU(Arithmetic logic unit), register bank till one complex microprocessor. 
 
-With all relevant aspects well defined the knowledge acquired can be clustered
-in a set of semantic notations and operations on them, that set is related with
-the expression power of the language. This group of semantic notations and operations
-someway will be available for the users.
-
-So the next step is design a DSL that expresses applications in the domain, the
-new DSL will have limited concepts which are all focused on specific domain. For
+The next step is designing a DSL that expresses applications in the domain. DSL
+will have limited concepts which are all focused on the specific domain. For
 design the DLS is necessary to analyse the relationship between it and the existing
 languages. According with~\cite{mernik:2005} there are some design patterns to
-develop a DSL based in existing languages that is represented by figure ~\ref{fig:patterns}.
+develop a DSL based on existing languages that is represented by figure ~\ref{fig:patterns}.
 
 \begin{figure}[htbp]
         \centering
         \includegraphics[width=\columnwidth]{img/designPatterns.png}
-        \caption{Design patterns - Figure extracted of~\cite{mernik:2005}.}\label{fig:patterns}
+        \caption{Design patterns - Figure extracted from~\cite{mernik:2005}.}\label{fig:patterns}
 \end{figure}
 
-In the implementation is constructed a library with the semantic notations
+In the implementation, a library with the semantic notations are built
 together with a compiler that perfoms the lexical, syntactic and semantic analysis, 
-after converts the DSL programs to sequence of library calls. Generally the library
-and the compiler are constructed with support of the tools or framework developed
+after converting the DSL programs to sequence of library calls. Generally the library
+and the compiler are built with support of the tools or framework developed
 for this purpose. \textbf{Xtext}~\cite{xtext} and \textbf{Groovy}~\cite{groovyDSL, groovyDSLBook}
-are good examples of tools to develop DSLs quickly.
+are examples of tools to develop DSLs.
 
 \section{Context Transformation}
 
-The bacteriological algorithm is part of the family of genetic algorithms that
-works on genetic context. A minor particle this algorithm is a gene, but without
-minor importance, all changes are influenced by it. The genes when clustered form
-an individual that have more representativeness than an gene and the top is the
-population that is set of individuals.
-
-Our context is focused on hadoop environment that have your particularities. Thus
+Our context is focused on hadoop environment that have its own particularities. Thus
 a context transformation is mandatory to implement the bacterionlogical algorithm
-on such environment. This is not a complicated task for who know the hadoop
-environment that is our specific domain.
+on such environment.
 
 On hadoop there is huge set of configuration parameters, we called one specific 
-parameters of \textbf{knob}, but a job use several knobs that are one knobs set. 
-When some knobs set are gathered we have a population of knobs.
+parameters as \textbf{knob}. A job use several knobs that are one set of knobs. 
+When sets of knobs gathered we have a population of knobs.
 
-So pure and simples tranformation have been done where each component of genetic
-context were translated to one component of hadoop environment. Like shown in the
+In the context tranformation, each component of genetic
+context was translated to one component of hadoop environment. Like shown in the
 figure~\ref{fig:transformation} we can realize that one gene was transformed to one knob,
-one individual(that is a genes set) was transformed to one knobs set and one individuals
-population was transformed to knobs population.
+one individual(that is a set of genes) was transformed to one set of knobs and
+one individuals population was transformed to a population of knobs.
 
 \begin{figure}[htbp]
         \centering
@@ -104,20 +92,36 @@ population was transformed to knobs population.
 \end{figure}
 
 An interesting characteristic of the tranformation is its bijection that one
-component in genetic domain is translated to one component in hadoop domain. Beyond
+component in the genetic domain is translated to one component in hadoop domain. Beyond
 that the transformation has inversion property, i.e, all components in hadoop domain
 can be translated to respective components in genetic domain. That properties
 represent compatibility between both domains and somewhat a good representativeness.
-
+\\
+\\
+\\
+\\
+\\
+\\
+\\
+%-------------------------------------------------------------------------------
+% Put here one formal teorem and a prof for the afirmation above. ^^^^^^^^^^^^^^
+%-------------------------------------------------------------------------------
 \section{DSL Proposal}
 
-The base of our DSL proposal is context transformation already explained, but to
-develop the DLS still missing one library or framework that help us in this task.
-The \textbf{Xtext}~\cite{xtext} framework seems one good option because is simple,
-covers all our necessities and we already have knowledge with this tool.
+Our DSL proposal is based on the \textbf{Xtext}~\cite{xtext} framework. It requires
+to define a grammar and rules for the specific domain. The base of the DLS is the
+self-tuning using BA. So our effort aims to describe rules to represent all aspects
+and components required for self-tunning.
 
-Our effort concentrate in one MapRedue job and your knobs to be adjusted. One
-draft of DLS is shown above:
+Our domain has the following components:
+
+\begin{itemize} 
+    \item The job with its properties;
+    \item The knobs;
+    \item The knob with own type, minimum and maximum thresholds and its initial value.
+\end{itemize}
+
+Based on these componens we present one draft of our DSL proposal:
 
 \singlespacing
 \begin{listing}[H]
@@ -127,10 +131,23 @@ DomainModel:
 	
 Job:
 	'Job' name=ID '{'
+        setProperties+=Properties*
 		setKnobs+=Knobs*
 	'}'
 ;
-	
+
+Properties:
+    'Properties' '{'
+        properties+=Property
+    '}'
+
+Property:
+    name=ID Value
+;
+
+Value: String;
+
+
 Knobs:
 	'knobs' '{'
 		knobs+=Knob*
@@ -195,6 +212,7 @@ Let's explain all rules involving our grammar:
 		\begin{minted}[mathescape,frame=lines,framesep=2mm,fontfamily=courier,fontsize=\scriptsize]{python}
 			Job:
 				'Job' name=ID '{'
+                    setProperties+=Properties*
 					setKnobs+=Knobs*
 				'}'
 			;	
@@ -204,7 +222,43 @@ Let's explain all rules involving our grammar:
 
 		The rule \textbf{Job} starts with the definition of a keyword ({\it Job})
 		followed by a name. Between 'braces' the job contains one arbitrary number
-		(*) of \textbf{Knobs} which will be added (+=) to a feature called setKnobs.
+		(*) of \textbf{Properties} and \textbf{Knobs} which will be added (+=) to
+        a feature called setProperties and setKnobs, respectively.
+
+    \item
+		\singlespacing
+		\begin{listing}[H]
+		\begin{minted}[mathescape,frame=lines,framesep=2mm,fontfamily=courier,fontsize=\scriptsize]{python}
+
+            Properties:
+                'Properties' '{'
+                    properties+=Property
+                '}'
+            ;
+		\end{minted}
+		\label{listing:modelRule}
+		\end{listing}
+
+        The rule {\bf Properties} starts with the definition of a keyword {\bf Properties}
+		and between 'braces' contains one arbitrary number (*) of \textbf{Property}
+		which will be added (+=) to a feature called properties.
+
+    \item
+		\singlespacing
+		\begin{listing}[H]
+		\begin{minted}[mathescape,frame=lines,framesep=2mm,fontfamily=courier,fontsize=\scriptsize]{python}
+
+            Property:
+                name=ID Value
+            ;
+
+            Value: String;
+		\end{minted}
+		\label{listing:modelRule}
+		\end{listing}
+
+        These two rules are used to describe job properties, each property has an
+        ID followed by its value. The value is an String.
 
 	\item
 		\singlespacing
@@ -264,9 +318,9 @@ Let's explain all rules involving our grammar:
 		\label{listing:modelRule}
 		\end{listing}
 
-		This three rules are used for integer types, the rule \textbf{IntType}
+		These three rules are used for integer types, the rule \textbf{IntType}
 		starts with the keyword {\bf int} followed by your respective minimum
-		and maximum possibles values. In sequence there is the keyword {\bf =}
+		and maximum possibles values. In sequence there is the keyword {\bf '='}
 		and the initial value for the knob.
 
 	\item
@@ -286,10 +340,10 @@ Let's explain all rules involving our grammar:
 		\label{listing:modelRule}
 		\end{listing}
 
-		This four rules are used for float types, the rule \textbf{FloatType} is
+		These four rules are used for float types, the rule \textbf{FloatType} is
 		similar the IntType rule, it starts with the keyword {\bf float} followed
 		by your respective minimum and maximum possibles values. In sequence there
-		is the key word {\bf =}	and the initial float value for the knob. The rule
+		is the key word {\bf '='}	and the initial float value for the knob. The rule
 		{\bf FloatType} expresses the float format.
 
 	\item
@@ -307,7 +361,7 @@ Let's explain all rules involving our grammar:
 		\end{listing}
 
 		The last one rule {\bf BoolType} expresses the boolean type, it starts with
-		the keyword {\bf boolean} followed by signal of \textbf{=} and the initial
+		the keyword {\bf boolean} followed by signal of \textbf{'='} and the initial
 		boolean	value that can be {\bf true} or {\bf false}.
 
 \end{enumerate}
