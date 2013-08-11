@@ -1,0 +1,35 @@
+\chapter{Conclusion} % (fold)
+\label{cha:conclusion}
+
+The initial experiments shown the feedback feature of our solution. This feature
+improve more quickly the BA performance that directly impacts the variation of
+runtime. Using BA the performance never recide showing up attractive for self-tuning
+on hadoop through its convergence.
+
+The sample method on hadoop is an original approach to avoid executing BA on all
+data storage. It benefits of the MapReduce paradigm and the key-value model, thus
+taking greater advantages on the Hadoop framework.
+
+The context transformation described in \ref{sec:contextTrans} shown the genetic
+domain and hadoop domain are consistent for the bijection property. So, the DLS
+developed has an intuitive use.
+
+\section{To do}
+
+\begin{itemize}
+
+    \item The front-end(DSL) is not integrated with the others components and some
+    rules need to be added to the grammar.
+
+    \item Improve the intregration between AutoConf componet because it has been
+    calling as system calls. The task consist in create a library in order to use
+    the AutoConf classes.
+
+    \item Yet is missing to test our solution on distributed hadoop. We want to
+    run tests increasing machines on the cluster and analyze the performance. So,
+    we can analyze what the BA performance on dinamic clusters.
+
+    \item Maybe, improve the BA implementation using heuristics to orient the
+    assignment values to the knobs.
+
+\end{itemize}

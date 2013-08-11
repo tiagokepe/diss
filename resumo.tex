@@ -1,1 +1,16 @@
-Texto do resumo....
+Atualemente, com a popularidade da internet e o fenômeno das redes sociais uma grande
+quantidade de dados é gerada dia à dia. MapReduce aparece como um poderoso paradigma
+para analisar e processar tal quantidade de dados. O arcabouço Hadoop implementa
+o MapReduce paradigma, no qual uma simples interface está disponível para implementar
+programas MapReduce(MR). Entretando, em programas MR desenvolvedores podem configurar
+vários paramêtros para otimizar a performance dos recursos disponíveis, mas encontrar
+boas configurações consome tempo e uma configuração encontrada em uma execução pode
+ser impraticável na próxima vez.
+
+A fim de facilitar e automatizar o ajuste de programas do hadoop, nós propomos um
+auto-ajuste baseado em amostragem de dados. Nossa abordagem permite uma boa configuração
+considerando os dados armazenados e o programa em questão. Usuários até podem fornecer
+suas usuais configurações do programa e então obter uma nova configuração que será
+mais apropriada com o estado atual dos dados armazenados e com o cluster do hadoop.
+Então os usuários tem uma ferramenta de ponta-a-ponta para automatizar a escolha
+de paramêtros para cada programa.

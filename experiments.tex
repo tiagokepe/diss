@@ -7,17 +7,105 @@ First we present study case to show the high convergence of BA.
 \section{Bacteriological algorithm convergence}
 
 Our first study case aims to show the high convergence of BA. We ran our solution
-in Hadoop standalone mode. The test consisted in run the BA with population
-size 3, i.e. with three set of knobs per generation, each set of knobs had 10 knobs.
-The input files were generated with hadoop job called {\it randomtextwriter} generating
-10GB of random text file. The sample percent was of 10 percent of the input, i.e.
-1GB of data.
+in Hadoop standalone mode. The test consisted in run the BA with the wordcount job
+that calculated the frequency that occur in the input files.
+
+The test was configured with a population of size 3, i.e. with three set of knobs
+per generation, each set of knobs had 10 knobs. The input files were generated with
+hadoop job called {\it randomtextwriter} generating 10GB of random text file. The
+sample percent was of 10 percent of the input, i.e. 1GB of data.
 
 We ran the BA in three rounds, up to three generations, up to six generations and
-last one up to twelve generations. The input set of knobs for the first round was
-generated randomly, after for the next round the set of knobs were the top three
+last one up to ten generations. The input set of knobs for the first round was
+generated randomly, after for the next round the set of knobs were the best three
 of the previous round. So, ocurring feedback of the process.
 
-We can realize with the three graphics that passing generations the time never
-recede, this characteristic occurs because of the memorization operator. Another
-aspect is t 
+In \ref{fig:3gen} the first round started with three random set of knobs, we can
+see the progress in 3 generations resulting an improvement of 6 seconds smaller
+than the first generation.
+\\
+\begin{figure}[htbp]
+    \centering
+	\includegraphics[scale=0.6]{graphics/img/3gen.png}
+    \caption{First round up to 3 generations} \label{fig:3gen}
+\end{figure}
+\\
+\\
+
+In \ref{fig:6gen} the second round started with the best three set of knobs
+of the first round. We can see the two first generations were worst than the best
+result of the last round, this occured because greater usage of the cluster. However,
+from the third generation the performance improved and the resulting was better
+in 50 seconds.
+\\
+\\
+\begin{figure}[htbp]
+\begin{center}
+	\includegraphics[scale=0.6]{graphics/img/6gen.png}
+\caption{Second round up to 6 generations} \label{fig:6gen}
+\end{center}
+\end{figure}
+\\
+\\
+\\
+\\
+\\
+\\
+\\
+\\
+\\
+\\
+\\
+\\
+\\
+\\
+\\
+\\
+\\
+
+In \ref{fig:10gen} the third round started  with the best three set of knobs
+of the second round. In this round we can realize the biggest drop of the runtime.
+It started with the same time of the best set reached in the second round,
+as the BA runs the runtime improves till stabilization in the final generations.
+This improvement occurred because some knobs values representing input, merge and
+sort buffers were changed, occurring further adjustment to the cluster. 
+\\
+\begin{figure}[htbp]
+\begin{center}
+	\includegraphics[scale=0.7]{graphics/img/10gen.png}
+\caption{Third round up to 10 generations} \label{fig:10gen}
+\end{center}
+\end{figure}
+\\
+
+With these three graphics \ref{fig:3gen}, \ref{fig:6gen} and \ref{fig:10gen}
+we can realize passing generations the runtime
+never recede, i.e. the runtime of one generation is less than or equal the
+previous generation. This characteristic occurs because of the memorization operator
+avoids regressions in the BA performance.
+\\
+\\
+\\
+\\
+\\
+\\
+\\
+\\
+\\
+
+\begin{figure}[htbp]
+\begin{center}
+	\includegraphics[scale=0.6]{graphics/img/all.png}
+\caption{All Rounds} \label{fig:allgen}
+\end{center}
+\end{figure}
+
+The graphic \ref{fig:allgen} is one aggregation of the all rounds. It aims
+to show the overall improvement of the runtime. The first set of knobs reached
+the runtime of 380 seconds in the first round, and the last set of knobs reached
+the runtime of 270 seconds in the last round. The overall improvement was about
+30 percent which is a considerable improvement.
+
+Moreover, the result achieved was influenced by the feedback provided by the software
+between the rounds. So, as well as the rounds pass continuous improvement occurs
+at runtime.
