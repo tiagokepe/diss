@@ -6,4 +6,4 @@ set xrange [1:6]
 set yrange [310 : 385]
 set xlabel "Generation number"
 set ylabel "Runtime(s)"
-plot "data/6gen.dat" u 1:2 title "BA performance" with linespoints ls 2
+plot "data/6gen.dat" u 1:2 title "BA convergence" with linespoints ls 2
