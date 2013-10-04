@@ -1,18 +1,18 @@
 \chapter{Preliminary implementation} % (fold)
 \label{cha:framework}
 
-In this chapter we present our preliminary implementation composited by three
+In this chapter we present our preliminary implementation composed of three
 modules: one front-end for the users to iteract with the system, one engine to
 choose good job configurations called tuning-by-testing and one back-end to
 report the new job configuration.
 
 \section{Overview}
 
-In the Figure~\ref{fig:overview} we show all components together. Fist of all the
-user create one file containing initial knobs, this file is submitted to component
+In figure~\ref{fig:overview} we show all components together. Fist of all, the
+user creates one file containing initial knobs, this file is submitted to component
 front-end which performs lexical, syntatic and semantic analysis on the file, after
-it is parsed and sent to engine component. This component, how already explained,
-active the BA to choose one good job configuration until reach the criteria. The
+it is parsed and sent to engine component. This component, as described previously,
+actives the BA to choose one good job configuration until it reaches the criteria. The
 result is passed to back-end component that saved in a file.
 
 One interesting feature is the result file can be used as input for the next round
@@ -27,16 +27,15 @@ as incremental software to improve its last result.
 
 \section{Front-end}
 
-The front-end is the {\it DSL} shown in the chapter \ref{cha:dsl}, it consist in
-say what is the job name to predict a good configuration and one or several set of
+The front-end is the DSL shown in the chapter \ref{cha:dsl}, it consists in
+saying what is the job name to choose a good configuration and one or several set of
 knobs with their initial values, which can be assigned with any values since the
 last configuration or rule of thumbs until a random assignment.
 
 One use case of the DSL is shown below, it contains the job name \textbf{WordCount},
-its properties and and its set of initial knobs. This set of knobs forms the initial population
-for bacteriological algorithm, each set of knob ({\bf knobs}) represents one individual
-and one single knob corresponds one gene of individual, any change is done on gene level i.e.
-on knob level.
+its properties and several sets of knobs. The sets of knobs form the initial population
+for the BA, each set of knob ({\bf knobs}) represents one individual
+and one single knob corresponds one gene, any change is done on knob level.
 
 \singlespacing
 \begin{listing}[H]
@@ -65,25 +64,26 @@ Job WordCount {
     }
 }
 \end{minted}
-\caption{Usage of DSL Proposal} 
+\caption{Example of a configuration written in our proposal DSL.} 
 \label{listing:usageDSL}
 \end{listing}
 
-As the example shown there are four properties for the job: the jar path, the HDFS
+As shown in~\ref{listing:usageDSL} there are four properties for the job: the jar path, the HDFS
 input directory where are stored the input files, the HDFS output directory and the sample
 percent. Also there are three initial set of knobs to test, in this example
 the first set could be the last job configuration, the second the rule of thumbs
 suggested by the comunity and the last one random assignment. However, the users
-can interested in testing new knobs that would be easy, just only put a new set
-of knobs to test, so this front-end covers enough use cases or combination cases
-as much as the users wish.
-\newline
-\newline
+can be interested in testing new set of knobs that would be easy, just put a new
+set of knobs to test, so this front-end covers quite use cases as the users wish.
+
 \section{Engine}
 
 The engine is divided in three components: the component to generate
-data sample, the component to auto configure hadoop with all configurations generated
-by the core component that is responsible for choosing job configurations using BA.
+data sample, the component to auto configure Hadoop and the core component that
+choosing configurations based on the BA.
+
+ with all configurations generated
+by  that is responsible for choosing job configurations using BA.
 
 \begin{figure}[htbp]
 	\centering
@@ -95,28 +95,27 @@ by the core component that is responsible for choosing job configurations using 
 
 The sampler is responsable to generate data sample, so it sends a command to hadoop
 in order to run the sampling job and its output will be used by the core component,
-this step is represented by command {\it \bf 0 - Sampling Job}.
+this step is represented by the action {\it \bf 0 - Sampling Job}.
 
 \subsection{AutoConf component}
 
-The AutoConf is one component developed by Ramiro, E. %\textcolor{red}{colocar referência do autoconf}
-it is responsable for communicate with the hadoop and inject new job configuration,
-as seen in the command {\bf 2 - Set Conf}. So independent of configuration files
-or configurations assigned for the own job, the hadoop will use job configuration
+The AutoConf is one component developed by Ramiro, E~\footnote{\href {https://github.com/erlfilho/AutoConf}}.%\textcolor{red}{colocar referência do autoconf}
+It is responsable for communicate with the Hadoop and inject new job configuration,
+as seen in the action {\bf 2 - Set Conf}. Despite the configurations assigned for
+the user in the Hadoop configuration files, the Hadoop will use job configurations
 sent for AutoConf.
 
 \subsection{Core component}
 
-The core component chooses job configurations in order to test its performance
-and evaluate the latency time using the bacteriological algorithm, it sends the
-command {\bf 1 - New Conf} to component AutoConf after assigned the configuration,
-the job is submited to hadoop through the command {\bf Run Job}, then your latency
-time is evaluated and the job configuration may added or not to list of good
-configurations. The commands sequence {\it 1, 2 and 3} occur until the BA finish,
+The core component generates job configurations using the BA in order to test its performance
+and evaluate the response time, it sends the action {\bf 1 - New Conf} to component AutoConf.
+After assigned the configuration, the job is submited to Hadoop through the action {\bf Run Job},
+then its response time is evaluated and the job configuration maybe added or not to list of good
+configurations. The actions sequence {\it 1, 2 and 3} occur until the BA finishes,
 i.e., until one criteria is reached.
 
 \section{Back-end}
 
-The back-end at the moment is undefined, currently the result is being saved in
-one file with the same format of the input file, but with an exception it contains
-just the best job configuration found by the BA until the criteria was reached.
+The back-end at the moment is is still being developed, currently the result is being saved in
+one file with the same format of the input file, but it contains just the best
+job configuration found by the core component.

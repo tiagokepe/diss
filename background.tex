@@ -2,44 +2,48 @@
 \label{cha:background}
 
 This chapter introduces some concepts that are used in the subsequent sections:
-the key-value model, MapReduce paradigm and Hadoop framework.
+the key-value model, the MapReduce paradigm and the Hadoop framework.
 
 \section{Key-value model}\label{section:mapreduce}
 
-Key-value model is a simplified model for data storage. It is based on one linked
-pair: the key and the value. Generally, the pair is stored without any aggregation or
-creation of data schema, thus all detailing of data is done in runtime. Unlike
-other models, such as the relational model~\cite{codd:1970}, in which the simplistic
-notion of relation already gives some sense for the data, similarly to the hierarchical
-data model~\cite{silber:2005} in which the links that connect the records give
-details for the data.
+The key-value model is a simple model for data storage, such simplicity is bound
+by the lack of data schema previously known. It is based on one linked pair: the
+key and the value. Generally, the pair is stored without any aggregation or
+creation of data schema, so the key-value model stores data of unstructured way.
+Thus all detailing of data is done at runtime. Unlike other models, such as the
+relational model~\cite{codd:1970}, in which the simplistic notion of tables, attributes
+and relations define the data structure for the storage. Another similar example
+is the hierarchical data model~\cite{silber:2005}, in which the links that connect
+the records define a data structure. Hence, those models and among other store
+structured data intrinsically.
 
-The Data Warehouse(DW) was create to solve some particularities involving relational
-model. It is a repository that aggregates data from several sources ~\cite{silber:2005},
-through the Extract Transform Load(\textbf{ETL}) technique: data is extracted from
-sources, transformed and load in the DW.
+Associated with the relational model was created the Data Warehouse (DW) \nomenclature{$DW$}{- Data Warehouse}
+technology, which aims to solve some issues involving the data structure of such model. It is
+a repository that aggregates data from several sources ~\cite{silber:2005}, through
+the Extract Transform Load (ETL) \nomenclature{$ETL$}{- Extract Transform Load}
+technique: data is extracted from sources, transformed and load in the DW.
 
 Due to the simple storage of the key-value model, data \textit{transformation}
 is done in the last phase, so the transformation occurs after the data has been
-loaded into the target database. Thus there is a inversion of ETL to ELT(Extract Load Transform).
-This inversion cause one issue to process large amounts of data, requiring much
-computing power while querying the data. One programming paradigm that handles the
-key-value model is the MR that is presented in the next section.
+loaded into the target database. Thus there is a inversion of ETL to ELT(Extract Load Transform) \nomenclature{$ELT$}{- Extract Load Transform}.
+This inversion causes one issue to process large amounts of data, requiring much
+computing power while querying the data. One programming paradigm that support ELT
+and handles the key-value model is the MR that is presented in the next section.
 
 \section{MapReduce}\label{section:mapreduce}
 MapReduce is a programming system that allows many processes of one
 database to be written in simple way,~\cite{molina:2009}. Vast amount of data
 is splitted and assigned to a set of computers, called computers cluster to improve
-performance through parallelism. The goal is to omit all complexity for that users
-focus on the main problem that is the data processing.
+performance through parallelism. The goal is to reduce the complexity, so the users
+can focus on the main problem that is the data processing.
 
 The paradigm is inspired on the high-level \textbf{Map} and \textbf{Reduce} primitives
 from functional programming languages. Hence the programmers can focus only on the
 creation of the two higher-order functions to solve a specific problem and to generate
 the necessary data.
 
-Acording \cite{dean:2008}: [\textit{"the computation takes a set of input key/value pairs,
-and produces a set of output key/value pairs."}]. An user writes the map function
+According to \cite{dean:2008}: [\textit{"the computation takes a set of input key/value pairs,
+and produces a set of output key/value pairs."}]. A user writes the map function
 that receives a set of key/value pairs and produces an \textit{intermidiate}
 set of key/value pairs. The reduce function receives the intermidiate pairs as
 input and produces the \textit{resultant} set of key/value pairs. This process is
@@ -47,36 +51,36 @@ shown in Figure~\ref{fig:mapReduce}:
 
 \begin{figure}[htbp]
 	\centering
-	\includegraphics[width=\columnwidth]{img/mapReduce.jpg}
+	\includegraphics[width=300px, height=200px]{img/mapReduce.jpg}
 	\caption{Map and Reduce process.}\label{fig:mapReduce}
 \end{figure}
 
 \section{Hadoop}
 Map and reduce functions are present in Lisp and others functional languages. Recently
 the MapReduce paradigm have been implemented by several frameworks such as Greenplum
-MapReduce~\cite{Greenplum:2008}, Aster Data~\cite{Aster:2011}, Nokia
+MapReduce~\cite{PivotalGreenplum:2008, Greenplum:2008}, Aster Data~\cite{Aster:2011}, Nokia
 Disco~\cite{Mundkur:2011}, Microsoft Dryad~\cite{Isard:2007}, and the one
 open-source implemantation from Apache: Hadoop~\cite{hadoop}.
 
-The Hadoop is a framework for reliable, scalable and distributed computing. It provide
-an interface to implement the map and reduce functions in high-level which are internally
-called as map and reduce tasks. It was designed for users focus on the implementation
+The Hadoop is a framework for reliable, scalable and distributed computing. It provides
+an interface to implement the map and reduce functions in high-level which are
+called map and reduce tasks. It was designed to allow users to focus on the implementation
 those functions, without worrying about the issues involving the distributed computing.
 All aspects involving the distributed computing and storage are left to the framework
-such as split files, replication, fault tolerance and distribuition of the tasks.
+such as split files, replication, fault tolerance and distribution of tasks.
 
 There are two main components on Hadoop:
 \begin{itemize}
-	\item Hadoop Distributed File System(HDFS);
+	\item Hadoop Distributed File System (HDFS);
 	\item Engine of MapReduce.
 \end{itemize}
 
 The HDFS stores all files in blocks, the block size is configurable per file, all
 blocks of one file have the same block size except the last block. It is divided
-in two components the \textit{NameNode} and \textit{DataNode}. The NameNode is placed
-in one master machine, it stores all metedata and manages all DataNodes. The DataNode
-stores data, when one DataNode starts it connects to theNameNode, then responds
-to requests from the NameNode for filesystem operations.
+into two components the \textbf{\emph{NameNode}} and the \textbf{\emph{DataNode}}. The NameNode is placed
+in one master machine, it stores all the metedata and manages all the DataNodes.
+The DataNode stores data, when one DataNode starts it connects to the NameNode,
+then responds to requests from the NameNode for file system operations.
 
 The engine of MapReduce is responsible for parallel processing. It is constituted
 by one master machine and slave machines, also called workers. The master
@@ -86,10 +90,10 @@ reduce task is called reducer.
 
 \subsection{Job processing}
 
-A job is a program in a high-level language(java, ruby or python) that implements
-so the map and reduce functions. Initially the master machine receives jobs with
-the relative input directory in the HDFS where are all files to be processed (inserted
-previously in the HDFS). Then the master requests to the NameNode infomation
+A job is a program in a high-level language such as Java, Ruby or Python that implements
+the map and reduce functions. Initially the master machine receives jobs with
+the relative input directory in the HDFS which contains all the files to be processed
+(inserted previously in the HDFS). Then the master requests to the NameNode infomation
 about the blocks and file locations, after that it deploys copies of the job across
 several workers.
 
@@ -106,18 +110,18 @@ The data flow between mappers and reducers are shown in Figure~\ref{fig:mrexecut
 	\centering
 	\includegraphics[width=\columnwidth]{img/mapreduce-en.pdf}
 %    \includegraphics[bb=0 0 1280 960]{img/mapreduce-en.pdf}
-	\caption{Execution of Map and Reduce operations}\label{fig:mrexecute}
+	\caption{Execution of Map and Reduce operations.}\label{fig:mrexecute}
 \end{figure}
 
 \subsection{MapReduce programing}
 
 The whole processing is based on \tuple{key,value} pairs. The mappers receive the
-file blocks, the mappers call the map function and pass the line number as key and
+file blocks, call the map function and pass the line number as key and
 the line as the value, so the pair "line number/line content" is the \tuple{k1,v1}.
-The map generate the intermediate result set of key and values \tuple{set(k2,v2)}, 
-when the mappers finished all values for \textit{k2} are agrouped in a list and
-the respective pair \tuple{k2, list(v2)} is generated. This pairs are sorted and
-pass as input for reducers that generate the result set:
+The map generates the intermediate result set of key and values \tuple{set(k2,v2)}, 
+when the mappers finished all values for \textit{k2} are grouped in a list and
+the respective pair \tuple{k2, list(v2)} is generated. These pairs are sorted and
+passed as input for reducers that generate the result set:
 
 \begin{center}
 \begin{tabular}{c c c c}
@@ -128,20 +132,21 @@ pass as input for reducers that generate the result set:
 \end{tabular}
 \end{center}
 
-Eventually, when the map result are already available in memory, a local reduce
-function \emph{Combiner} is used for optimization reasons, then all values for
-determinated key are combined, resulting in a local set \tuple{k2, list(v2)}.
+Eventually, when the map results are already available in memory, a local reduce
+function \emph{Combiner} is used for optimization reasons. Then all values for
+a given key are combined, resulting in a local set \tuple{k2, list(v2)}.
 This function runs after the Map and before the Reduce functions on
 every node that run map functions. The Combiner may be seen as a \emph{mini-reduce}
 function, which operates only on data generated by one machine.
 
-A good example of a MapReduce job is the Grep application listing~\ref{listing:mapper},
+A well known example of a MapReduce job is the Grep application listing~\ref{listing:mapper},
 which receives as an input several textual documents and as an output a set of pairs
 \tuple{Key,Value}, where each key is a different pattern found and the value is the
 number of occurrences of the pattern in the files. The responsibility of the Mapper
-is to find pattern in the files and the reduce is to sum the amount found each patterns.
+is to find pattern in the files. The reducer is responsible for summing the number
+of occurrence for each patterns.
 
-The \code{map()} method has four parameters: \code{key}, which is never used; \code{value},
+The \code{map()} method has four parameters: \code{key}; \code{value},
 one line that contains the text to be processed; the \code{output}, which will receive
 the output pairs and \code{reporter} for debug. The body of the method uses the class
 \code{Pattern} to describe a desired pattern, the class \code{Matcher} to find this
@@ -173,7 +178,7 @@ public class RegexMapper<K> extends MapReduceBase
     }
 }
 \end{minted}
-\caption{Class RegexMapper packed in Hadoop~\cite{hadoop}} 
+\caption{Class RegexMapper packed in Hadoop~\cite{hadoop}.} 
 \label{listing:mapper}
 \end{listing}
 
@@ -208,15 +213,15 @@ public class LongSumReducer<K> extends MapReduceBase
 
 }
 \end{minted}
-\caption{Class LongSumReducer packed in Hadoop~\cite{hadoop}} 
+\caption{Class LongSumReducer packed in Hadoop~\cite{hadoop}.} 
 \label{listing:reducer}
 \end{listing}
 
 \doublespacing
 An example of the inputs and the outputs of both functions when applied to a
 simple sentence is presented in Table~\ref{table:regexp}. We applied the following
-regular expression: \\ \code{"[a-z]$*$o[a-z]$*$"}, this expression find the words that
-contains the vowel \code{o} in the midle of them.
+regular expression: \\ \code{"[a-z]$*$o[a-z]$*$"}, this expression finds the words that
+contains the vowel \code{o}.
 
 \begin{table}[H]
 	\begin{center}
@@ -227,7 +232,7 @@ contains the vowel \code{o} in the midle of them.
 		\hline
 	\end{tabular}
 	\end{center}
-	\caption{Regular expression example}
+	\caption{Regular expression example.}
 	\label{table:regexp}
 \end{table}
 

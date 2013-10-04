@@ -20,9 +20,13 @@ clean:
 	rm -f *.ind
 	rm -f *.out
 	rm -f *.pyg
+	rm -f *.nls
+	rm -f *.nlo
 	rm -f *~
 
+
 dissertacao.pdf: dissertacao.tex introduction.tex background.tex kepe.bbl
+	makeindex dissertacao.nlo -s nomencl.ist -o dissertacao.nls
 	pdflatex -shell-escape dissertacao.tex
 	pdflatex -shell-escape dissertacao
 

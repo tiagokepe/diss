@@ -9,6 +9,8 @@
 \usepackage{amsmath}
 \usepackage{epsfig}
 \usepackage{multirow}
+\usepackage{nomencl}
+\makenomenclature
 
 \newcommand{\tuple}[1]{\ensuremath{\left \langle #1 \right \rangle }}
 \newcommand{\code}[1]{\textbf{#1}}
@@ -17,10 +19,11 @@
 
 \usepackage{verbatim}
 %\usepackage[pdfborder={0 0 0},plainpages=false]{hyperref}
-
+\usepackage{enumitem}
 \usepackage[ruled, vlined]{algorithm2e}
 \usepackage{listings}
 \usepackage{minted}
+\usepackage{alltt}
 %\usemintedstyle{trac}
 
 %\usepackage{isolatin1}
@@ -76,6 +79,15 @@
 %\input{agradecimentos.tex}          % possiu somente o texto
 
 \tableofcontents
+\listoffigures
+\addcontentsline{}{chapter}{\MakeUppercase{Pictures List}}
+\newpage
+\listoftables
+\addcontentsline{}{chapter}{\MakeUppercase{Tables List}}
+
+\newpage
+\printnomenclature
+
 
 %\listoffigures         % se houver mais do que 3 figuras
 %\addcontentsline{toc}{chapter}{\MakeUppercase{Lista de Figuras}}
@@ -123,7 +135,7 @@
 %   month =        {}#sep;
 % }
 %
-\addcontentsline{toc}{chapter}{\MakeUppercase{Bibliografia}}
+\addcontentsline{toc}{chapter}{\MakeUppercase{Bibliography}}
 
 \singlespacing
 \makecapadissertacao

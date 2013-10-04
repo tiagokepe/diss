@@ -201,7 +201,7 @@ FUNCTION {format.names}
 	      if$
 	      t "others" =
 		{ " et~al." * }
-		{ " e " * t * }
+		{ " and " * t * }
 	      if$
 	    }
 	  if$
@@ -276,7 +276,7 @@ FUNCTION {format.date}
     }
     { month empty$
 	'year
-	{ month " de " * year * }
+	{ month " " * year * }
       if$
     }
   if$

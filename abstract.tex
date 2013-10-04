@@ -1,16 +1,19 @@
 % abstract
-Currently with the popularity of internet and phenomenon of the social
-networks a large amount of data is generated day-to-day. MapReduce appears as a
+Currently with the popularity of Internet and phenomenon of the social
+networks a large amount of data is generated daily. MapReduce appears as a
 powerful paradigm to analyse and process such amount of data. The Hadoop framework
 implements the MapReduce paradigm, in which a simple interface is available to
-implement MapReduce(MR) jobs. However, in MR jobs developers are allowed to setup several
-parameters to draw optimal performance from the available resources, but find a
-good configuration is time consuming and a configuration found in an execution
-may be impracticable for the next time.
+implement MapReduce jobs. However, in MR jobs developers are allowed to setup several
+parameters to draw optimal performance from the available resources, but finding
+a configuration which best suits to the current state of the cluster and the data
+stored is time consuming and a configuration found in an execution may be impracticable
+for the next time.
 
-In order to facilitate and automate tuning hadoop jobs, we propose a self-tuning
-based on data sampling. Our approach allows to find a good job configuration considering
-the data stored and the job in question. The users till can provide their usual
-job configurations then get the new job configuration that will be more appropriate
-with the current state of data stored and the hadoop cluster. So the users have
-end-to-end tool to automate the choice of knobs for each job.
+Hadoop cluster administration involve, beyond other tasks, choosing configurations
+for each job. In Big Data environments this task is impracticable to be executed
+manually because of the huge set of jobs. In order to facilitate and automate tuning
+Hadoop jobs, we propose a self-tuning based on data sampling. Our approach allows
+to find a job configuration according to the cluster state and the data stored.
+Users can provide their usual job configurations then get the new job configuration
+that will be more appropriate with the Hadoop current state and the data stored.
+So the users have an end-to-end tool to automate the choice of knobs for each job.
